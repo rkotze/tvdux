@@ -1,5 +1,5 @@
 node_modules/
-lib/
+dist/
 
 #ignore thumbnails created by windows
 Thumbs.db
