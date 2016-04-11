@@ -8,4 +8,4 @@ Install: `npm i`
 
 Run app: `npm start`
 
-[localhost:8009](http://localhost:8010)
+[localhost:8010](http://localhost:8010)
