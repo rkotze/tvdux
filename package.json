@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "webpack-dev-server --content-base src/",
-    "unit-tests": "mocha src/*spec.js",
+    "unit-tests": "mocha --compilers js:babel-core/register src/*spec.js",
     "compile": "webpack --progress --colors",
     "prepublish": "npm run unit-tests && npm run compile"
   },
