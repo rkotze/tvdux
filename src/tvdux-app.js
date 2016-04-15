@@ -1,7 +1,16 @@
+'use strict';
 import React, { Component } from 'react';
 import DuxLayout from './layouts/layout';
 
 class TvDux extends Component {
+  constructor(){
+    super();
+  }
+
+  componentDidMount(){
+    this.props.dispatch();
+  }
+
   render() {
     return (
       <DuxLayout>
