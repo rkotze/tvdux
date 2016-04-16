@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "scripts": {
     "start": "webpack-dev-server --content-base src/",
-    "unit-tests": "mocha -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/*spec.js",
+    "test": "mocha -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/*spec.js",
+    "test:w": "npm test -- --watch",
     "compile": "webpack --progress --colors",
-    "prepublish": "npm run unit-tests && npm run compile"
+    "prepublish": "npm run test && npm run compile"
   },
   "main": "dist/tvdux-app.js",
   "dependencies": {

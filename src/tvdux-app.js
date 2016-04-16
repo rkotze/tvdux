@@ -8,7 +8,7 @@ class TvDux extends Component {
   }
 
   componentDidMount(){
-    this.props.dispatch();
+    this.props.getShows();
   }
 
   render() {

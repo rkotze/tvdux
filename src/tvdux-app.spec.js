@@ -6,33 +6,28 @@ import shouldSinon from 'should-sinon';
 
 describe('Given a web user navigates to TVdux', () => {
   context('When they arrive on the home page', () => {
-    let dispatch;
+    let getShowsSpy;
     before(() => {
-      dispatch = sinon.spy();
+      getShowsSpy = sinon.spy();
     });
 
     afterEach(() => {
-      dispatch.reset();
-    });
-
-    after(() => {
-      dispatch.restore();
+      getShowsSpy.reset();
     });
 
     it('Then they should see a list of tv shows', () => {
-      let app = mount(<TvDux dispatch={dispatch} />);
+      let app = mount(<TvDux getShows={getShowsSpy} />);
       let showListTotal = app.find('.show-list-item').length;
       showListTotal.should.be.above(1);
     });
 
     it('Then TVdux requests a list of latest shows', () => {
-      let didMount = sinon.spy(TvDux.prototype, 'componentDidMount');
+      let didMountSpy = sinon.spy(TvDux.prototype, 'componentDidMount');
 
-      mount(<TvDux dispatch={dispatch} />);
+      mount(<TvDux getShows={getShowsSpy} />);
 
-      didMount.should.be.calledOnce();
-      dispatch.should.be.calledOnce();
-      dispatch.should.be.calledWith({type: 'GET_SHOWS'});
+      didMountSpy.should.be.calledOnce();
+      getShowsSpy.should.be.calledOnce();
     });
   });
 
