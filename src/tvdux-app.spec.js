@@ -1,33 +1,46 @@
 import React from 'react';
-import TvDux from './tvdux-app';
+import TvDuxList from './tvdux-app';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
 import shouldSinon from 'should-sinon';
+import { createStore } from 'redux';
 
 describe('Given a web user navigates to TVdux', () => {
   context('When they arrive on the home page', () => {
-    let getShowsSpy;
+    let getShowsSpy, fakeStore;
     before(() => {
       getShowsSpy = sinon.spy();
+      fakeStore = createStore(() => undefined);
+      sinon.stub(fakeStore, 'dispatch');
     });
 
     afterEach(() => {
       getShowsSpy.reset();
     });
 
+    after(() => {
+      fakeStore.dispatch.restore();
+    });
+
     it('Then they should see a list of tv shows', () => {
-      let app = mount(<TvDux getShows={getShowsSpy} />);
+      let app = mount(<TvDuxList getShows={getShowsSpy} />);
       let showListTotal = app.find('.show-list-item').length;
       showListTotal.should.be.above(1);
     });
 
     it('Then TVdux requests a list of latest shows', () => {
-      let didMountSpy = sinon.spy(TvDux.prototype, 'componentDidMount');
+      let didMountSpy = sinon.spy(TvDuxList.prototype, 'componentDidMount');
 
-      mount(<TvDux getShows={getShowsSpy} />);
+      mount(<TvDuxList getShows={getShowsSpy} />);
 
       didMountSpy.should.be.calledOnce();
       getShowsSpy.should.be.calledOnce();
+    });
+
+    it('Then get shows dispatches a "get shows" action', () => {
+      mount(<TvDux />);
+      fakeStore.dispatch.should.be.calledOnce();
+      fakeStore.dispatch.should.be.calledWith({ type: 'GET_SHOWS'});
     });
   });
 

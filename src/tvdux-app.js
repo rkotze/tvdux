@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import DuxLayout from './layouts/layout';
 
-class TvDux extends Component {
+class TvDuxList extends Component {
   constructor(){
     super();
   }
@@ -27,4 +27,4 @@ class TvDux extends Component {
   }
 }
 
-export default TvDux;
+export default TvDuxList;

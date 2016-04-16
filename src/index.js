@@ -1,5 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import TvDux from './tvdux-app';
+import TvDuxList from './tvdux-app';
 
-render(<TvDux />, document.getElementById('tvdux-app'));
+render(<TvDuxList />, document.getElementById('tvdux-app'));

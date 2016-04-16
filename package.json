@@ -14,7 +14,8 @@
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.2",
-    "redux": "^3.4.0"
+    "redux": "^3.4.0",
+    "superagent": "^1.8.3"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
@@ -28,6 +29,7 @@
     "less": "^2.6.1",
     "less-loader": "^2.2.2",
     "mocha": "^2.4.5",
+    "nock": "^8.0.0",
     "react-addons-test-utils": "^15.0.1",
     "should": "^8.3.0",
     "should-sinon": "0.0.5",
