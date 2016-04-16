@@ -1,6 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 import DuxLayout from './layouts/layout';
+import { connect } from 'react-redux';
 
 class TvDuxList extends Component {
   constructor(){
@@ -27,4 +28,18 @@ class TvDuxList extends Component {
   }
 }
 
-export default TvDuxList;
+const mapStateToProps = (state) => {
+  return { };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getShows: () => {
+      dispatch({ type: 'GET_SHOWS' });
+    }
+  };
+};
+
+const TvDux = connect(mapStateToProps, mapDispatchToProps)(TvDuxList);
+
+export { TvDux, TvDuxList };

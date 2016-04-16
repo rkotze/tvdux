@@ -1,8 +1,9 @@
 import React from 'react';
-import TvDuxList from './tvdux-app';
+import { TvDux, TvDuxList } from './tvdux-app';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
 import shouldSinon from 'should-sinon';
+import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 describe('Given a web user navigates to TVdux', () => {
@@ -38,7 +39,7 @@ describe('Given a web user navigates to TVdux', () => {
     });
 
     it('Then get shows dispatches a "get shows" action', () => {
-      mount(<TvDux />);
+      mount(<Provider store={fakeStore}><TvDux /></Provider>);
       fakeStore.dispatch.should.be.calledOnce();
       fakeStore.dispatch.should.be.calledWith({ type: 'GET_SHOWS'});
     });
