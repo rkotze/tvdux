@@ -1,12 +1,14 @@
 import superagent from 'superagent';
+import { loadingSchedule } from './fetch-schedule.actions';
 
 const SCHEDULE_END_POINT = 'http://api.tvmaze.com/schedule?country=GB';
 
-const getShows = () => {
+const getSchedule = () => {
   return (dispatch) => {
+    dispatch(loadingSchedule());
     superagent
       .get(SCHEDULE_END_POINT);
   };
 };
 
-export { getShows };
+export { getSchedule };
