@@ -37,9 +37,10 @@ describe('Get a list of scheduled tv shows', () => {
   });
 
   it('should dispatch a successful action', () => {
-    let getReturn = {
+    let amazing = { data: 'amazing'},
+    getReturn = {
       end: function(cb) {
-        cb(null, {body: {}, ok: true});
+        cb(null, {body: amazing, ok: true});
         return this;
       }
     },
@@ -48,6 +49,6 @@ describe('Get a list of scheduled tv shows', () => {
     getSchedule()(dispatchSpy);
 
     getReturnEndSpy.should.be.calledOnce();
-    dispatchSpy.should.be.calledWith(successfullyGotSchedule());
+    dispatchSpy.should.be.calledWith(successfullyGotSchedule(amazing));
   });
 });

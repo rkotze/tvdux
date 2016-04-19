@@ -10,7 +10,7 @@ const getSchedule = () => {
       .get(SCHEDULE_END_POINT)
       .end((error, response) => {
         if(response && response.ok){
-          dispatch(successfullyGotSchedule());
+          dispatch(successfullyGotSchedule(response.body));
         }
       });
   };
