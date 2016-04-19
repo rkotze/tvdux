@@ -2,7 +2,7 @@ import sinon from 'sinon';
 import shouldSinon from 'should-sinon';
 import superagent from 'superagent';
 import { getSchedule } from './fetch-schedule.reducer';
-import { loadingSchedule } from './fetch-schedule.actions';
+import { loadingSchedule, successfullyGotSchedule } from './fetch-schedule.actions';
 
 describe('Get a list of scheduled tv shows', () => {
   let getRequestStub, dispatchSpy;
@@ -13,6 +13,11 @@ describe('Get a list of scheduled tv shows', () => {
       }
     });
     dispatchSpy = sinon.spy();
+  });
+
+  afterEach(() => {
+    dispatchSpy.reset();
+    getRequestStub.reset();
   });
 
   after(() => {
@@ -29,5 +34,20 @@ describe('Get a list of scheduled tv shows', () => {
     getSchedule()(dispatchSpy);
 
     dispatchSpy.should.be.calledWith(loadingSchedule());
+  });
+
+  it('should dispatch a successful action', () => {
+    let getReturn = {
+      end: function(cb) {
+        cb(null, {body: {}, ok: true});
+        return this;
+      }
+    },
+    getReturnEndSpy = sinon.spy(getReturn, 'end');
+    getRequestStub.returns(getReturn);
+    getSchedule()(dispatchSpy);
+
+    getReturnEndSpy.should.be.calledOnce();
+    dispatchSpy.should.be.calledWith(successfullyGotSchedule());
   });
 });
