@@ -1,11 +1,11 @@
-export const LOADING_SCHEDULE = 'load/schedule';
+export const LOADING_SCHEDULE = 'loading/schedule';
 export const SUCCESSFUL_SCHEDULE = 'successful/schedule';
 
 export const loadingSchedule = () => ({
   type: LOADING_SCHEDULE,
 });
 
-export const successfullyGotSchedule = (response) => ({
+export const successfullyGotSchedule = (shows) => ({
   type: SUCCESSFUL_SCHEDULE,
-  response
+  shows
 });
