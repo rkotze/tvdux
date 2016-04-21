@@ -10,4 +10,10 @@ describe('Fetch schedule reducer to build the next state', () => {
     let loadingState = fetchScheduleReducer(undefined, {type: 'loading/schedule'});
     loadingState.should.deepEqual({ loadingState: 'LOADING', shows: [] });
   });
+
+  it('should have a succesful state', () => {
+    let showAndEpisodes = [{name: 'episode_name', show:[{name: 'someshow'}]}];
+    let successfulState = fetchScheduleReducer(undefined, {type: 'successful/schedule', shows: showAndEpisodes});
+    successfulState.should.deepEqual({loadingState: 'COMPLETED', shows: showAndEpisodes});
+  });
 });

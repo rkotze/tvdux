@@ -1,4 +1,4 @@
-import { LOADING_SCHEDULE, LOADING_STATES } from './fetch-schedule.actions';
+import { LOADING_SCHEDULE, LOADING_STATES, SUCCESSFUL_SCHEDULE } from './fetch-schedule.actions';
 let initalState = {
   shows: []
 };
@@ -9,7 +9,12 @@ export const fetchScheduleReducer = (state = initalState, action) => {
       return Object.assign({}, state, {
         loadingState: LOADING_STATES.LOADING,
         shows: []
-      })
+      });
+    case SUCCESSFUL_SCHEDULE: 
+      return Object.assign({}, state, {
+        loadingState: LOADING_STATES.COMPLETED,
+        shows: action.shows
+      });
     default:
       return state;
   }
