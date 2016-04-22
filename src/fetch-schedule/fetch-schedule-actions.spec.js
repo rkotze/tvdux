@@ -1,8 +1,10 @@
 import sinon from 'sinon';
 import shouldSinon from 'should-sinon';
 import superagent from 'superagent';
-import { getSchedule } from './fetch-schedule';
-import { loadingSchedule, successfullyGotSchedule } from './fetch-schedule.actions';
+import { 
+  loadingSchedule, 
+  successfullyGotSchedule, 
+  getSchedule } from './fetch-schedule.actions';
 
 describe('Get a list of scheduled tv shows', () => {
   let getRequestStub, dispatchSpy;
