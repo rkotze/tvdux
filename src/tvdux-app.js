@@ -1,6 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 import DuxLayout from './layouts/layout';
+import { getSchedule } from './fetch-schedule/fetch-schedule.actions';
 import { connect } from 'react-redux';
 
 class TvDuxList extends Component {
@@ -35,7 +36,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getShows: () => {
-      dispatch({ type: 'GET_SHOWS' });
+      dispatch(getSchedule());
     }
   };
 };

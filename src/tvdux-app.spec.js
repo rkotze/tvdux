@@ -41,7 +41,7 @@ describe('Given a web user navigates to TVdux', () => {
     it('Then get shows dispatches a "get shows" action', () => {
       mount(<Provider store={fakeStore}><TvDux /></Provider>);
       fakeStore.dispatch.should.be.calledOnce();
-      fakeStore.dispatch.should.be.calledWith({ type: 'GET_SHOWS'});
+      fakeStore.dispatch.should.be.calledWith(sinon.match.func);
     });
   });
 
