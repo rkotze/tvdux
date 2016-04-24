@@ -10,34 +10,39 @@ class TvDuxList extends Component {
   }
 
   componentDidMount(){
-    this.props.getShows();
+    this.props.getSchedule();
   }
 
   render() {
+    const { schedule } = this.props;
     return (
       <DuxLayout>
         <ul className="show-list">
-          <li className="show-list-item">
-            <h2>Show name A</h2>
-          </li>
-          <li className="show-list-item">
-            <h2>Show name B</h2>
-          </li>
+          {schedule.map((episode) => (
+              <li className="show-list-item">
+                <p>Episode: {episode.name}</p>
+                <p>Show: {episode.show.name}</p>
+              </li>
+            ))}
         </ul>
       </DuxLayout>
     );
   }
 }
 
+TvDuxList.defaultProps = {
+  schedule: []
+};
+
 const mapStateToProps = (state) => {
   return {
-    shows: []
+    schedule: []
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getShows: () => {
+    getSchedule: () => {
       dispatch(getSchedule());
     }
   };

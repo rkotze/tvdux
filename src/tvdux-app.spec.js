@@ -9,6 +9,10 @@ import { createStore } from 'redux';
 describe('Given a web user navigates to TVdux', () => {
   context('When they arrive on the home page', () => {
     let getScheduleSpy, fakeStore;
+    const fakeScheduleObject = [
+      {name:'episode a', show:{name:"some tv show a"}},
+      {name:'episode b', show:{name:"some tv show b"}},
+    ];
     before(() => {
       getScheduleSpy = sinon.spy();
       fakeStore = createStore(() => undefined);
@@ -24,7 +28,7 @@ describe('Given a web user navigates to TVdux', () => {
     });
 
     it('Then they should see a list of tv episodes and shows', () => {
-      let app = mount(<TvDuxList getShows={getScheduleSpy} />);
+      let app = mount(<TvDuxList getSchedule={getScheduleSpy} schedule={fakeScheduleObject} />);
       let showListTotal = app.find('.show-list-item').length;
       showListTotal.should.be.above(1);
     });
@@ -32,7 +36,7 @@ describe('Given a web user navigates to TVdux', () => {
     it('Then TVdux requests a list of latest episodes', () => {
       let didMountSpy = sinon.spy(TvDuxList.prototype, 'componentDidMount');
 
-      mount(<TvDuxList getShows={getScheduleSpy} />);
+      mount(<TvDuxList getSchedule={getScheduleSpy} />);
 
       didMountSpy.should.be.calledOnce();
       getScheduleSpy.should.be.calledOnce();
@@ -44,7 +48,7 @@ describe('Given a web user navigates to TVdux', () => {
 
       fakeStore.dispatch.should.be.calledOnce();
       fakeStore.dispatch.should.be.calledWith(sinon.match.func);
-      propsOfTvDuxList.should.have.property('getShows');
+      propsOfTvDuxList.should.have.property('getSchedule');
     });
   });
 
