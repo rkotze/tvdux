@@ -9,7 +9,7 @@ module.exports = {
     module: {
         loaders: [
             { 
-                test: /\.less$/,
+                test: /\.(less|css)$/,
                 loader: "style!css!less" 
             },
             { 

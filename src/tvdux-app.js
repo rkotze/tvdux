@@ -18,6 +18,7 @@ class TvDuxList extends Component {
     const { schedule } = this.props;
     return (
       <DuxLayout>
+        <h1>Tv Schedule</h1>
         <ul className="show-list">
           {schedule.map((episode, index) => {
             const { image } = episode.show;
