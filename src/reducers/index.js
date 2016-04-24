@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import fetchScheduleReducer from './fetch-schedule/fetch-schedule.reducer';
+import { fetchScheduleReducer as tv } from '../fetch-schedule/fetch-schedule.reducer';
 
 export default combineReducers({
-  fetchScheduleReducer
+  tv
 });

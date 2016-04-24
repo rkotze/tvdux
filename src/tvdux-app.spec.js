@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import sinon from 'sinon';
 import shouldSinon from 'should-sinon';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
 describe('Given a web user navigates to TVdux', () => {
   context('When they arrive on the home page', () => {
@@ -15,7 +15,7 @@ describe('Given a web user navigates to TVdux', () => {
     ];
     before(() => {
       getScheduleSpy = sinon.spy();
-      fakeStore = createStore(() => undefined);
+      fakeStore = createStore(combineReducers({tv: () => ''}));
       sinon.stub(fakeStore, 'dispatch');
     });
 
@@ -51,5 +51,4 @@ describe('Given a web user navigates to TVdux', () => {
       propsOfTvDuxList.should.have.property('getSchedule');
     });
   });
-
 });

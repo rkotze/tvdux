@@ -14,12 +14,13 @@ class TvDuxList extends Component {
   }
 
   render() {
+    // console.log(this.props);
     const { schedule } = this.props;
     return (
       <DuxLayout>
         <ul className="show-list">
-          {schedule.map((episode) => (
-              <li className="show-list-item">
+          {schedule.map((episode, index) => (
+              <li key={index} className="show-list-item">
                 <p>Episode: {episode.name}</p>
                 <p>Show: {episode.show.name}</p>
               </li>
@@ -31,12 +32,14 @@ class TvDuxList extends Component {
 }
 
 TvDuxList.defaultProps = {
-  schedule: []
+  schedule: [],
+  loadingState: null
 };
 
 const mapStateToProps = (state) => {
   return {
-    schedule: []
+    schedule: state.tv.schedule || [],
+    loadingState: state.tv.loadingState
   };
 };
 
