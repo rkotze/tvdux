@@ -14,7 +14,6 @@ class TvDuxList extends Component {
   }
 
   render() {
-    // console.log(this.props);
     const { schedule } = this.props;
     return (
       <DuxLayout>
