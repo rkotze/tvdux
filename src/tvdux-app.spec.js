@@ -8,40 +8,43 @@ import { createStore } from 'redux';
 
 describe('Given a web user navigates to TVdux', () => {
   context('When they arrive on the home page', () => {
-    let getShowsSpy, fakeStore;
+    let getScheduleSpy, fakeStore;
     before(() => {
-      getShowsSpy = sinon.spy();
+      getScheduleSpy = sinon.spy();
       fakeStore = createStore(() => undefined);
       sinon.stub(fakeStore, 'dispatch');
     });
 
     afterEach(() => {
-      getShowsSpy.reset();
+      getScheduleSpy.reset();
     });
 
     after(() => {
       fakeStore.dispatch.restore();
     });
 
-    it('Then they should see a list of tv shows', () => {
-      let app = mount(<TvDuxList getShows={getShowsSpy} />);
+    it('Then they should see a list of tv episodes and shows', () => {
+      let app = mount(<TvDuxList getShows={getScheduleSpy} />);
       let showListTotal = app.find('.show-list-item').length;
       showListTotal.should.be.above(1);
     });
 
-    it('Then TVdux requests a list of latest shows', () => {
+    it('Then TVdux requests a list of latest episodes', () => {
       let didMountSpy = sinon.spy(TvDuxList.prototype, 'componentDidMount');
 
-      mount(<TvDuxList getShows={getShowsSpy} />);
+      mount(<TvDuxList getShows={getScheduleSpy} />);
 
       didMountSpy.should.be.calledOnce();
-      getShowsSpy.should.be.calledOnce();
+      getScheduleSpy.should.be.calledOnce();
     });
 
-    it('Then get shows dispatches a "get shows" action', () => {
-      mount(<Provider store={fakeStore}><TvDux /></Provider>);
+    it('Then get schedule dispatches a "get schedule" action', () => {
+      const tvDux = mount(<Provider store={fakeStore}><TvDux /></Provider>);
+      const propsOfTvDuxList = tvDux.find(TvDuxList).first().props();
+
       fakeStore.dispatch.should.be.calledOnce();
       fakeStore.dispatch.should.be.calledWith(sinon.match.func);
+      propsOfTvDuxList.should.have.property('getShows');
     });
   });
 

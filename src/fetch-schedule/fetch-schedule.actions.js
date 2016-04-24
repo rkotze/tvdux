@@ -12,9 +12,9 @@ export const loadingSchedule = () => ({
   type: LOADING_SCHEDULE,
 });
 
-export const successfullyGotSchedule = (shows) => ({
+export const successfullyGotSchedule = (schedule) => ({
   type: SUCCESSFUL_SCHEDULE,
-  shows
+  schedule
 });
 
 export const getSchedule = () => {

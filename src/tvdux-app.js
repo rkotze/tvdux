@@ -30,7 +30,9 @@ class TvDuxList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { };
+  return {
+    shows: []
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
