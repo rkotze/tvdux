@@ -1,11 +1,11 @@
 'use strict';
 import React, { Component } from 'react';
+import core from './core.less';
 
 class DuxLayout extends Component {
   render() {
     return (
-      <div>
-      	<h1>TV Dux</h1>
+      <div className="tvdux-app">
         {this.props.children}
       </div>
     );

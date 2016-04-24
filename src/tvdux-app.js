@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import DuxLayout from './layouts/layout';
 import { getSchedule } from './fetch-schedule/fetch-schedule.actions';
 import { connect } from 'react-redux';
+import listLess from './layouts/list.less';
 
 class TvDuxList extends Component {
   constructor(){
@@ -18,12 +19,16 @@ class TvDuxList extends Component {
     return (
       <DuxLayout>
         <ul className="show-list">
-          {schedule.map((episode, index) => (
+          {schedule.map((episode, index) => {
+            const { image } = episode.show;
+            const showImage = image ? <p><img src={image.medium} /></p> : <p className="image-placeholder"></p>;
+            return (
               <li key={index} className="show-list-item">
+                {showImage}
                 <p>Episode: {episode.name}</p>
                 <p>Show: {episode.show.name}</p>
               </li>
-            ))}
+            )})}
         </ul>
       </DuxLayout>
     );
