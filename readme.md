@@ -8,4 +8,6 @@ Install: `npm i`
 
 Run app: `npm start`
 
+Run tests: `npm test`
+
 [localhost:8010](http://localhost:8010)
