@@ -2,8 +2,9 @@
   "name": "tvdux",
   "version": "0.0.1",
   "scripts": {
-    "start": "webpack-dev-server --content-base src/",
-    "test": "mocha -r ignore-styles -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "start": "node src/server.js",
+    "oldstart": "webpack-dev-server --content-base src/",
+    "test": "mocha -r ignore-styles -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/**/*spec.js",
     "test:w": "npm test -- --watch",
     "compile": "webpack --progress --colors",
     "prepublish": "npm run test && npm run compile"
@@ -19,7 +20,7 @@
     "superagent": "^1.8.3",
     "react-router": "2.0.0",
     "react-router-redux": "^4.0.0-rc.1",
-    "redux-logger": "^2.4.0",
+    "redux-logger": "^2.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",

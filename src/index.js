@@ -1,12 +1,6 @@
 'use strict';
 import React from 'react';
 import { render } from 'react-dom';
-import { TvDux } from './tvdux-app';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import reducers from './reducers';
-
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import Root from './containers/root'

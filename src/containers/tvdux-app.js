@@ -1,13 +1,17 @@
 'use strict';
 import React, { Component } from 'react';
-import DuxLayout from './layouts/layout';
-import { getSchedule } from './fetch-schedule/fetch-schedule.actions';
+import DuxLayout from '../layouts/layout';
+import { getSchedule } from '../middleware/api';
 import { connect } from 'react-redux';
-import listLess from './layouts/list.less';
+import listLess from '../layouts/list.less';
 
 class TvDuxList extends Component {
   constructor(){
     super();
+  }
+
+  componentWillMount(){
+    this.props.getSchedule();
   }
 
   componentDidMount(){
