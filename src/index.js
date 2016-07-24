@@ -7,10 +7,15 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
-let store = createStore(reducers, applyMiddleware(thunk));
+import { browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+import Root from './containers/root'
+import configureStore from './store/configure-store'
+
+const store = configureStore()
+const history = syncHistoryWithStore(browserHistory, store)
 
 render(
-	<Provider store={store}>
-  	<TvDux />
-  </Provider>, 
-  document.getElementById('tvdux-app'));
+  <Root store={store} history={history} />,
+  document.getElementById('tvdux-app')
+)

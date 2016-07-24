@@ -16,7 +16,10 @@
     "react-redux": "^4.4.2",
     "redux": "^3.4.0",
     "redux-thunk": "^2.0.1",
-    "superagent": "^1.8.3"
+    "superagent": "^1.8.3",
+    "react-router": "2.0.0",
+    "react-router-redux": "^4.0.0-rc.1",
+    "redux-logger": "^2.4.0",
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
@@ -38,7 +41,14 @@
     "should-sinon": "0.0.5",
     "sinon": "^1.17.3",
     "style-loader": "^0.13.0",
+    "concurrently": "^0.1.1",
+    "express": "^4.13.3",
+    "redux-devtools": "^3.1.0",
+    "redux-devtools-dock-monitor": "^1.0.1",
+    "redux-devtools-log-monitor": "^1.0.3",
     "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.9.1"
   }
 }

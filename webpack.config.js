@@ -1,11 +1,18 @@
 module.exports = {
-    entry: {
-        tvdux: "./src/index.js"
-    },
-    output: {
-        path: __dirname + "/dist",
-        filename: "[name]-app.js"
-    },
+    devtool: 'cheap-module-eval-source-map',
+    entry: [
+    'webpack-hot-middleware/client',
+    './index'
+  ],
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/static/'
+  },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
     module: {
         loaders: [
             { 
@@ -14,14 +21,11 @@ module.exports = {
             },
             { 
                 test: /\.(js|jsx)$/, 
-                exclude: /node_modules/, 
-                loader: "babel-loader"
+                loaders: [ 'babel' ],
+                exclude: /node_modules/,
+                include: __dirname
             }
         ]
-    },
-    devServer: {
-        inline: true,
-        port: 8010
     },
     resolve: {
         extensions: ['', '.js', '.jsx'] 
