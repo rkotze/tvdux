@@ -1,7 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 import DuxLayout from '../layouts/layout';
-import { getSchedule } from '../middleware/api';
+import getSchedule from '../middleware/api';
 import { connect } from 'react-redux';
 import listLess from '../layouts/list.less';
 
@@ -60,6 +60,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const TvDux = connect(mapStateToProps, mapDispatchToProps)(TvDuxList);
-
-export { TvDux, TvDuxList };
+export default connect(mapStateToProps, mapDispatchToProps)(TvDuxList);
