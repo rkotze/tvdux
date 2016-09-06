@@ -9,7 +9,9 @@ const ComponentX = ({ children, className }) => {
 };
 
 const ShadowX = ({ children }) => {
-	return <span>{ children }</span>
+	return <ul>{ 
+		React.Children.map(children, (child) => (<li>{ child }</li>) ) 
+	}</ul>
 };
 
 describe('Given I\'m an enzyme', () => {
@@ -31,5 +33,14 @@ describe('Given I\'m an enzyme', () => {
     	</ShadowX>
     	</ComponentX>);
     shallowDom.text().should.equal('Hello<ShadowX />');
+  });
+
+  it('has 3 items in a list', () => {
+    const shallowDom = shallow(<ShadowX>
+    		<span>one</span>
+    		<span>two</span> 
+    		<span>three</span> 
+    	</ShadowX>);
+    shallowDom.find('li').length.should.equal(3);
   });
 });
