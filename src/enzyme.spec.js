@@ -22,7 +22,7 @@ describe('Given I\'m an enzyme', () => {
 
   it('render a shallow component with "shallow" class name', () => {
     const shallowDom = shallow(<ComponentX className="shallow">Hello</ComponentX>);
-    shallowDom.hasClass('shallow').should.be.true();
+    shallowDom.should.have.className('shallow');
   });
 
   it('can\'t render a child in shallow component', () => {
@@ -37,10 +37,11 @@ describe('Given I\'m an enzyme', () => {
 
   it('has 3 items in a list', () => {
     const shallowDom = shallow(<ShadowX>
-    		<span>one</span>
+    		<span title="room">one</span>
     		<span>two</span> 
     		<span>three</span> 
     	</ShadowX>);
     shallowDom.find('li').length.should.equal(3);
+    shallowDom.find('li span').first().should.have.attr('title', 'room');
   });
 });
