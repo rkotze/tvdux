@@ -44,11 +44,11 @@ describe('Given a web user navigates to TVdux', () => {
 
     it('Then get schedule dispatches a "get schedule" action', () => {
       const tvDux = mount(<Provider store={fakeStore}><TvDux /></Provider>);
-      const propsOfTvDuxList = tvDux.find(TvDuxList).first().props();
+      const firstTvDuxList = tvDux.find(TvDuxList).first();
 
       fakeStore.dispatch.should.be.calledOnce();
       fakeStore.dispatch.should.be.calledWith(sinon.match.func);
-      propsOfTvDuxList.should.have.property('getSchedule');
+      firstTvDuxList.should.have.prop('getSchedule');
     });
   });
 });

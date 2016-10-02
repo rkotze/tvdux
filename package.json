@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "webpack-dev-server --content-base src/",
-    "test": "mocha -r ignore-styles -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test": "mocha -r ignore-styles -r should ./test-setup/jsdom.js -r should-enzyme --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
     "test:w": "npm test -- --watch",
     "compile": "webpack --progress --colors",
     "prepublish": "npm run test && npm run compile"
@@ -35,6 +35,7 @@
     "react-addons-test-utils": "^15.0.1",
     "shelljs": "^0.7.0",
     "should": "^8.3.0",
+    "should-enzyme": "0.0.1",
     "should-sinon": "0.0.5",
     "sinon": "^1.17.3",
     "style-loader": "^0.13.0",
